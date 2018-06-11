@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails trips-api: development" uuid="a3728bd3-f92e-4d3d-9297-9fc8bef02000">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails trips-api: test" uuid="066d3c02-e853-4692-8e52-46dedb17d069">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
+    <data-source name="Rails trips-api: production" uuid="e568c338-1514-4dab-9135-3a09c0497147">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>trips-api</user-name>
+    </data-source>
+  </component>
+</project>
