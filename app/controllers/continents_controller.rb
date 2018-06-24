@@ -5,12 +5,12 @@ class ContinentsController < ApplicationController
   def index
     @continents = Continent.all
 
-    render json: @continents
+    render json: @continents.as_json(include: :trips)
   end
 
   # GET /continents/1
   def show
-    render json: @continent
+    render json: @continent.as_json(include: :trips)
   end
 
   private
