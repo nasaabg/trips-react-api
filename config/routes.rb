@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :continents, only: [:index, :show]
   resources :trips
   resource :user, only: [:show]
   resources :users, only: [:index]

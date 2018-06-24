@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613201513) do
+ActiveRecord::Schema.define(version: 20180624111900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "continents", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "continent_id"
+    t.index ["continent_id"], name: "index_trips_on_continent_id"
   end
 
   create_table "trips_users", id: false, force: :cascade do |t|
@@ -37,4 +46,5 @@ ActiveRecord::Schema.define(version: 20180613201513) do
     t.string "avatar_url"
   end
 
+  add_foreign_key "trips", "continents"
 end
