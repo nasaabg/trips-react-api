@@ -29,6 +29,10 @@ gem 'faraday', '~> 0.11'
 
 # Encode JWT tokens
 gem 'jwt', '~> 1.5'
+gem 'carrierwave', '~> 1.0'
+gem 'exifr'
+gem 'pry-rails', group: :development
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

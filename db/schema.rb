@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624111900) do
+ActiveRecord::Schema.define(version: 20180624135303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20180624111900) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trip_images", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.string "image"
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_trip_images_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -46,5 +56,6 @@ ActiveRecord::Schema.define(version: 20180624111900) do
     t.string "avatar_url"
   end
 
+  add_foreign_key "trip_images", "trips"
   add_foreign_key "trips", "continents"
 end
