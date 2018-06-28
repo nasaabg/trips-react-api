@@ -20,6 +20,10 @@ class TripsController < ApplicationController
     render json: @trip
   end
 
+  def my_trips
+    render json: current_user.trips
+  end
+
   # POST /trips
   def create
     @trip = Trip.new(trip_params)
