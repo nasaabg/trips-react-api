@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'exifr/jpeg'
 
 class ReadPhotoCoordinates < Struct.new(:photo_path)
@@ -10,8 +12,8 @@ class ReadPhotoCoordinates < Struct.new(:photo_path)
     return {} if data.gps.nil?
 
     {
-        latitude: data.gps.latitude,
-        longitude: data.gps.longitude
+      latitude: data.gps.latitude,
+      longitude: data.gps.longitude
     }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TripImage < ApplicationRecord
   belongs_to :trip
 
@@ -5,8 +7,8 @@ class TripImage < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def set_gps_location
-    return unless self.try(:image).try(:path)
-    coordinates = ReadPhotoCoordinates.call(self.image.path)
+    return unless try(:image).try(:path)
+    coordinates = ReadPhotoCoordinates.call(image.path)
     self.lat = coordinates[:latitude]
     self.lng = coordinates[:longitude]
   end

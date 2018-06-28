@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContinentsController < ApplicationController
   before_action :set_continent, only: [:show]
 
@@ -14,7 +16,8 @@ class ContinentsController < ApplicationController
   end
 
   private
-    def set_continent
-      @continent = Continent.find(params[:id])
-    end
+
+  def set_continent
+    @continent = Continent.find(params[:id])
+  end
 end

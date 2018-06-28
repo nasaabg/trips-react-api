@@ -1,9 +1,16 @@
+# frozen_string_literal: true
+
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :update, :destroy]
+  before_action :set_trip, only: %i[show update destroy]
 
   # GET /trips
   def index
-    @trips = Trip.all
+    @trips =
+      if params[:continent_id]
+        Trip.where(continent_id: params[:continent_id])
+      else
+        Trip.all
+      end
 
     render json: @trips
   end
@@ -39,13 +46,14 @@ class TripsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trip
-      @trip = Trip.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def trip_params
-      params.require(:trip).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_trip
+    @trip = Trip.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def trip_params
+    params.require(:trip).permit(:name, :description)
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,52 +12,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624135303) do
-
+ActiveRecord::Schema.define(version: 20_180_624_135_303) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "continents", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'continents', force: :cascade do |t|
+    t.string 'name'
+    t.string 'code'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "trip_images", force: :cascade do |t|
-    t.bigint "trip_id"
-    t.string "image"
-    t.float "lat"
-    t.float "lng"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_trip_images_on_trip_id"
+  create_table 'trip_images', force: :cascade do |t|
+    t.bigint 'trip_id'
+    t.string 'image'
+    t.float 'lat'
+    t.float 'lng'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['trip_id'], name: 'index_trip_images_on_trip_id'
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "continent_id"
-    t.index ["continent_id"], name: "index_trips_on_continent_id"
+  create_table 'trips', force: :cascade do |t|
+    t.string 'name'
+    t.string 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'continent_id'
+    t.index ['continent_id'], name: 'index_trips_on_continent_id'
   end
 
-  create_table "trips_users", id: false, force: :cascade do |t|
-    t.bigint "trip_id"
-    t.bigint "user_id"
-    t.index ["trip_id"], name: "index_trips_users_on_trip_id"
-    t.index ["user_id"], name: "index_trips_users_on_user_id"
+  create_table 'trips_users', id: false, force: :cascade do |t|
+    t.bigint 'trip_id'
+    t.bigint 'user_id'
+    t.index ['trip_id'], name: 'index_trips_users_on_trip_id'
+    t.index ['user_id'], name: 'index_trips_users_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "login"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "avatar_url"
+  create_table 'users', force: :cascade do |t|
+    t.string 'login'
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'avatar_url'
   end
 
-  add_foreign_key "trip_images", "trips"
-  add_foreign_key "trips", "continents"
+  add_foreign_key 'trip_images', 'trips'
+  add_foreign_key 'trips', 'continents'
 end
