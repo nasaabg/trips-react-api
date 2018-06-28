@@ -27,6 +27,8 @@ class TripsController < ApplicationController
   # POST /trips
   def create
     @trip = Trip.new(trip_params)
+    #TODO: HACK
+    @trip.continent = Continent.first
 
     if @trip.save
       render json: @trip, status: :created, location: @trip
