@@ -21,7 +21,7 @@ class TripsController < ApplicationController
   end
 
   def my_trips
-    render json: current_user.trips
+    render json: @current_user.trips
   end
 
   # POST /trips
