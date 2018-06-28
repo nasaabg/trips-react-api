@@ -27,6 +27,9 @@ class TripsController < ApplicationController
   # POST /trips
   def create
     @trip = Trip.new(trip_params)
+    puts "USER"
+    puts @current_user
+
     @trip.continent = Continent.first
     @trip.owners << @current_user
 
