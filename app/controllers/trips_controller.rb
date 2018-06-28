@@ -27,10 +27,10 @@ class TripsController < ApplicationController
   # POST /trips
   def create
     @trip = Trip.new(trip_params)
-    #TODO: HACK
     @trip.continent = Continent.first
+    @current_user.trips << @trip
 
-    if @trip.save
+    if @trip.save @current_user.save!
       render json: @trip, status: :created, location: @trip
     else
       render json: @trip.errors, status: :unprocessable_entity
