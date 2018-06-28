@@ -28,9 +28,9 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.continent = Continent.first
-    @trip.owners << current_user
+    @trip.owners << @current_user
 
-    if @trip.save @current_user.save!
+    if @trip.save && @current_user.save!
       render json: @trip, status: :created, location: @trip
     else
       render json: @trip.errors, status: :unprocessable_entity
