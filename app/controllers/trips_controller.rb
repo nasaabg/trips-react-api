@@ -28,7 +28,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.continent = Continent.first
-    @current_user.trips << @trip
+    @trip.owners << current_user
 
     if @trip.save @current_user.save!
       render json: @trip, status: :created, location: @trip
