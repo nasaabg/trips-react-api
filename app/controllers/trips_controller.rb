@@ -2,6 +2,7 @@
 
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update destroy]
+  before_action :authenticate_user!, only: %i[my_trips create]
 
   # GET /trips
   def index
