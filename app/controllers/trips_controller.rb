@@ -28,10 +28,6 @@ class TripsController < ApplicationController
   # POST /trips
   def create
     @trip = Trip.new(trip_params)
-    puts "USER"
-    puts @current_user
-
-    @trip.continent = Continent.first
     @trip.owners << @current_user
 
     if @trip.save && @current_user.save!
@@ -64,6 +60,6 @@ class TripsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def trip_params
-    params.require(:trip).permit(:name, :description)
+    params.require(:trip).permit(:name, :description, :continent_id)
   end
 end

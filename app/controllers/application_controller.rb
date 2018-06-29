@@ -3,11 +3,7 @@
 class ApplicationController < ActionController::API
   def current_user
     token = params[:token]
-    puts "TOKEN"
-    puts token
     payload = TokiToki.decode(token)
-    puts "payload"
-    puts payload
     @current_user ||= User.find_by_login(payload[0]['sub'])
   end
 
